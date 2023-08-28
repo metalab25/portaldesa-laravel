@@ -12,6 +12,8 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
+    protected $table = 'categories';
+
     public function sluggable(): array
     {
         return [
@@ -19,5 +21,10 @@ class Category extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
     }
 }
