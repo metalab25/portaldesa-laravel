@@ -65,7 +65,6 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
     }
 
     /**
@@ -73,7 +72,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $rules = [
+            'name'          =>  'required',
+            'slug'          =>  'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Category::where('id', $category->id)->update($validatedData);
+        Alert::success('Berhasil', 'Kategori berhasil diperbaharui');
+        return redirect('webmin/categories');
     }
 
     /**
