@@ -16,8 +16,7 @@
                         <label for="name" class="form-label text-sm font-outfit font-weight-bold opacity-8">Nama
                             Kategori</label>
                         <input type="text" name="name" id="name" class="form-control form-control-sm"
-                            placeholder="Tuliskan nama kategori" value="{{ old('name') }}">
-                        <input type="hidden" class="form-control form-control-sm" id="slug" name="slug">
+                            placeholder="Tuliskan nama kategori" value="{{ old('name', $item->name) }}">
                     </div>
                     <div class="form-group mb-0">
                         <label for="slug"
