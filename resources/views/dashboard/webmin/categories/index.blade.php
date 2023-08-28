@@ -28,15 +28,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-md-1">
-                        <a href="{{ url('adminduk/penduduk/create') }}" class="btn btn-sm btn-primary btn-block">Tambah</a>
-                    </div> --}}
-                    {{-- <div class="col-md-1">
-                        <button type="button" class="btn btn-sm btn-block btn-info mb-2" data-toggle="modal"
-                            data-target="#tambahRW">
-                            Tambah RW
-                        </button>
-                    </div> --}}
                     <div class="col-md-1">
                         <button type="button" class="btn btn-sm btn-block btn-primary mb-2" data-toggle="modal"
                             data-target="#tambah">
@@ -90,11 +81,11 @@
                                         @endif
                                     </td>
                                     <td class="align-middle text-center">
-                                        <a href="#" class="btn btn-xs btn-warning btn-edit"
-                                            data-id="{{ $item->id }}" data-toggle="modal"
-                                            data-target="#edit{{ $item->id }}" title="Edit Kategori">
+                                        <button class="btn btn-xs btn-warning btn-edit" data-id="{{ $item->id }}"
+                                            data-toggle="tooltip" data-target="#edit{{ $item->id }}"
+                                            title="Edit Kategori">
                                             <i class="fad fa-pencil text-white text-xs"></i>
-                                        </a>
+                                        </button>
                                         <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="tooltip"
                                             data-original-title="Delete user">
                                             <i class="fad fa-trash-can text-white text-xs"></i>
@@ -109,16 +100,34 @@
             </div>
         </div>
     </section>
+    {{-- @include('dashboard.webmin.categories.modal-tambah') --}}
 
-
-    <script>
-        const name = document.querySelector("#name");
-        const slug = document.querySelector("#slug");
-
-        name.addEventListener("keyup", function() {
-            let preslug = name.value;
-            preslug = preslug.replace(/ /g, "-");
-            slug.value = preslug.toLowerCase();
-        });
-    </script>
+    <div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="editLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editLabel">Tambah Kategori {{ $item->id }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('webmin/categories') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group mb-2">
+                            <label for="name" class="form-label text-sm font-outfit font-weight-bold opacity-8">Nama
+                                Kategori</label>
+                            <input type="text" name="name" id="name" class="form-control form-control-sm"
+                                placeholder="Tuliskan nama kategori" value="{{ old('name') }}">
+                            <input type="hidden" class="form-control form-control-sm" id="slug" name="slug">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
