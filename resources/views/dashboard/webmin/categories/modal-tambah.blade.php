@@ -16,7 +16,7 @@
                             Kategori</label>
                         <input type="text" name="name" id="name" class="form-control form-control-sm"
                             placeholder="Tuliskan nama kategori" value="{{ old('name') }}">
-                        <input type="text" class="form-control form-control-sm" id="slug" name="slug">
+                            <input type="hidden" class="form-control form-control-sm" id="slug" name="slug">
                     </div>
                 </div>
                 <div class="modal-footer">
