@@ -140,13 +140,6 @@
                             <p>Penduduk</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="../../index3.html"
-                            class="nav-link {{ request()->segment(2) == 'pamong' ? 'active' : '' }} font-weight-lighter">
-                            <i class="fad fa-users nav-icon"></i>
-                            <p>Pemerintahan</p>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li class="nav-item {{ request()->segment(1) == 'webmin' ? 'menu-open' : '' }}">
@@ -166,8 +159,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href=""
-                            class="nav-link {{ request()->segment(2) == 'category' ? 'active' : '' }} font-weight-lighter">
+                        <a href="{{ url('webmin/categories') }}"
+                            class="nav-link {{ request()->segment(2) == 'categories' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-grid-2 nav-icon"></i>
                             <p>Kategori</p>
                         </a>
