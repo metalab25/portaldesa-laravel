@@ -56,6 +56,17 @@ Breadcrumbs::for('penduduk', function (BreadcrumbTrail $trail) {
     $trail->push('Penduduk', url('adminduk/penduduk'));
 });
 
+// Dashboard > Webmin
+Breadcrumbs::for('webmin', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Webmin');
+});
+
+Breadcrumbs::for('categories', function (BreadcrumbTrail $trail) {
+    $trail->parent('webmin');
+    $trail->push('Kategori', url('webmin/categories'));
+});
+
 // Dashboard > Setting
 Breadcrumbs::for('setting', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

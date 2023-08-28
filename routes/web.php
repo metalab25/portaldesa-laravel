@@ -1,19 +1,17 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
-// use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\DesaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\KeluargaController;
-use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KontributorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +42,14 @@ Route::resource('wilayah/cluster', WilayahController::class)->middleware('auth',
 Route::resource('wilayah/rw', RwController::class)->middleware('auth', 'admin');
 Route::resource('wilayah/rt', RtController::class)->middleware('auth', 'admin');
 
-// Keluarga
+// Kependudukan > Keluarga
 Route::resource('adminduk/keluarga', KeluargaController::class)->middleware('auth', 'admin', 'operator');
+// Kependudukan > Penduduk
 Route::resource('adminduk/penduduk', PendudukController::class)->middleware('auth', 'admin', 'operator');
+
+// webmin > Kategori
+Route::resource('webmin/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
+Route::get('webmin/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
 
 Route::get('setting/application', [ConfigController::class, 'index'])->name('application')->middleware('auth', 'admin');
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');
