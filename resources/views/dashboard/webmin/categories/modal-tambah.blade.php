@@ -16,12 +16,7 @@
                             Kategori</label>
                         <input type="text" name="name" id="name" class="form-control form-control-sm"
                             placeholder="Tuliskan nama kategori" value="{{ old('name') }}">
-                    </div>
-                    <div class="form-group mb-0">
-                        <label for="name"
-                            class="form-label text-sm font-outfit font-weight-bold opacity-8">Slug</label>
-                        <input type="text" class="form-control form-control-sm" id="slug" name="slug"
-                            value="{{ old('slug') }}">
+                            <input type="hidden" class="form-control form-control-sm" id="slug" name="slug">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -32,13 +27,14 @@
     </div>
 </div>
 
+{{-- 
 <script>
     const name = document.querySelector("#name");
     const slug = document.querySelector("#slug");
 
-    title.addEventListener("keyup", function() {
-        let preslug = title.value;
+    name.addEventListener("keyup", function() {
+        let preslug = name.value;
         preslug = preslug.replace(/ /g, "-");
         slug.value = preslug.toLowerCase();
     });
-</script>
+</script> --}}
