@@ -50,6 +50,7 @@ Route::resource('adminduk/penduduk', PendudukController::class)->middleware('aut
 // webmin > Kategori
 Route::resource('webmin/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
 Route::get('webmin/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+// Route::get('webmin/categories/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete')->middleware('auth', 'admin', 'operator');
 
 Route::get('setting/application', [ConfigController::class, 'index'])->name('application')->middleware('auth', 'admin');
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');

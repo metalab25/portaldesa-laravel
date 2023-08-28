@@ -22,6 +22,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+{{-- Sweet Alert 2 --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/js/adminlte.js') }}"></script>
 </body>

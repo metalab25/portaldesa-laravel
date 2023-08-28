@@ -89,7 +89,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('webmin/categories');
     }
 
     public function checkSlug(Request $request)
