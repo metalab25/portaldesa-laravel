@@ -94,11 +94,7 @@
                                                 <i class="fad fa-trash-can text-white text-xs"></i>
                                             </button>
                                         </form>
-                                        {{-- <button class="btn btn-xs btn-danger btn-delete" data-toggle="tooltip"
-                                            title="Delete Kategori" data-id="{{ $item->id }}"
-                                            data-name="{{ $item->name }}" data-slug="{{ $item->slug }}">
-                                            <i class="fad fa-trash-can text-white text-xs"></i>
-                                        </button> --}}
+
                                     </td>
                                     @include('dashboard.webmin.categories.modal-edit')
                                 </tr>
@@ -110,35 +106,4 @@
         </div>
     </section>
     @include('dashboard.webmin.categories.modal-tambah')
-
-    {{-- <script>
-        $('.btn-delete').click(function() {
-            var dataid = $(this).attr('data-id');
-            var name = $(this).attr('data-name');
-            var slug = $(this).attr('data-slug');
-            Swal.fire({
-                title: 'Yakin ?',
-                text: "Anda akan menghapus kategori " + name + "",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus'
-            }).then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/webmin/categories/delete/" + slug + ""
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                } else {
-                    Swal.fire({
-                        text: "Anda membatalkan hapus kategori " + name + "",
-                        icon: 'success',
-                    })
-                }
-            })
-        });
-    </script> --}}
 @endsection
