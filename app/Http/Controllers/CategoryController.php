@@ -90,6 +90,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
+        Alert::success('Berhasil', 'Kategori berhasil dihapus');
         return redirect('webmin/categories');
     }
 
