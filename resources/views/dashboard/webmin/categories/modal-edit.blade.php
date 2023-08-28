@@ -1,9 +1,9 @@
-<div class="modal fade" id="tambah" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    aria-labelledby="tambahLabel" aria-hidden="true">
+<div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahLabel">Tambah Kategori</h5>
+                <h5 class="modal-title" id="editLabel">Tambah Kategori {{ $item->name }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
