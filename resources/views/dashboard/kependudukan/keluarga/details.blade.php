@@ -14,7 +14,8 @@
                     Anggota
                 </button>
                 <a href=""
-                    class="btn btn-success btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block mb-1">Kartu
+                    class="btn btn-success btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block mb-1">Cetak
+                    Kartu
                     Keluarga
                 </a>
                 <a href="{{ url('adminduk/keluarga') }}"
@@ -45,11 +46,13 @@
                     <table class="table table-bordered table-striped align-items-center mb-0">
                         <thead>
                             <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit"
+                                    width="2%">
+                                    No</th>
                                 <th
-                                    class="text-center text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit ps-3">
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit">
                                     NIK</th>
-                                <th
-                                    class="text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit ps-3">
+                                <th class="text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit">
                                     Nama</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xxs font-weight-600 opacity-7 font-outfit">
@@ -60,36 +63,62 @@
                                 <th
                                     class="text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit ps-3">
                                     Hubungan Keluarga</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-600 opacity-7 font-outfit">
+                                    Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($penduduk as $item) --}}
-                            <tr>
-                                <td class="text-center align-middle text-xs">
-                                    <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
-                                        {{ $keluarga->penduduk->nik }}</p>
-                                </td>
-                                <td class="align-middle text-xs">
-                                    <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
-                                        {{ $keluarga->penduduk->nama }}</p>
-                                </td>
-                                <td class="text-center align-middle text-xs">
-                                    <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
-                                        {{ \Carbon\Carbon::parse($keluarga->penduduk->tanggal_lahir)->format('d F Y') }}
-                                    </p>
-                                </td>
-                                <td class="text-center align-middle text-sm">
-                                    <p class="text-sm text-secondary mb-0">
-                                        {{ $keluarga->penduduk->kelamin->name }}
-                                    </p>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <p class="text-sm text-secondary mb-0">
-                                        {{ $keluarga->penduduk->hubungan_keluarga->name }}
-                                    </p>
-                                </td>
-                            </tr>
-                            {{-- @endforeach --}}
+                            @foreach ($anggota as $item)
+                                <tr>
+                                    <td>
+                                        <p class="text-center text-xs text-secondary mb-0">{{ $loop->iteration }}
+                                        </p>
+                                    </td>
+                                    <td class="text-center align-middle text-xs">
+                                        <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
+                                            {{ $item->nik }}</p>
+                                    </td>
+                                    <td class="align-middle text-xs">
+                                        <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
+                                            {{ $item->nama }}</p>
+                                    </td>
+                                    <td class="text-center align-middle text-xs">
+                                        <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
+                                            {{ \Carbon\Carbon::parse($item->tanggal_lahir)->format('d F Y') }}
+                                        </p>
+                                    </td>
+                                    <td class="text-center align-middle text-sm">
+                                        <p class="text-sm text-secondary mb-0">
+                                            {{ $item->kelamin->name }}
+                                        </p>
+                                    </td>
+                                    <td class="align-middle text-sm">
+                                        <p class="text-sm text-secondary mb-0">
+                                            {{ $item->hubungan_keluarga->name }}
+                                        </p>
+                                    </td>
+                                    <td class="align-middle text-center pe-3">
+                                        <a href="{{ url('adminduk/penduduk/' . $item->nik) }}" class="btn btn-xs btn-info"
+                                            data-toggle="tooltip" title="Edit Kategori">
+                                            <i class="fad fa-eye text-white text-xs"></i>
+                                        </a>
+                                        <a href="{{ url('adminduk/penduduk/' . $item->id . '/edit') }}"
+                                            class="btn btn-xs btn-warning"data-toggle="tooltip" title="Edit Kategori">
+                                            <i class="fad fa-pencil text-white text-xs"></i>
+                                        </a>
+                                        <form action="/adminduk/penduduk/{{ $item->id }}" method="POST"
+                                            class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-xs btn-danger"
+                                                onclick="return confirm ('Anda yakin akan menghapus penduduk ini ?')">
+                                                <i class="fad fa-trash-can text-white text-xs"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
