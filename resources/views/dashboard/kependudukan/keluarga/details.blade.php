@@ -24,24 +24,26 @@
                 </a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped mb-3">
-                    <tbody>
-                        <tr>
-                            <td class="text-xs" width="10%">Nomor Kartu Keluarga</td>
-                            <td class="text-xs">{{ $keluarga->no_kk }}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-xs" width="10%">Kepala Keluarga</td>
-                            <td class="text-xs">{{ $keluarga->penduduk->nama }}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-xs" width="10%">Alamat</td>
-                            <td class="text-xs">{{ $keluarga->alamat }} RT {{ $keluarga->rt->rt }}
-                                RW {{ $keluarga->rw->rw }}
-                                {{ $keluarga->wilayah->name }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-3">
+                        <tbody>
+                            <tr>
+                                <td class="text-xs" width="10%">Nomor Kartu Keluarga</td>
+                                <td class="text-xs">{{ $keluarga->no_kk }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-xs" width="10%">Kepala Keluarga</td>
+                                <td class="text-xs">{{ $keluarga->penduduk->nama }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-xs" width="10%">Alamat</td>
+                                <td class="text-xs">{{ $keluarga->alamat }} RT {{ $keluarga->rt->rt }}
+                                    RW {{ $keluarga->rw->rw }}
+                                    {{ $keluarga->wilayah->name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="table-responsive p-0">
                     <table class="table table-bordered table-striped align-items-center mb-0">
                         <thead>
