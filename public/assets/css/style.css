@@ -157,10 +157,6 @@ hr.horizontal.dark {
     font-size: 0.875rem !important;
 }
 
-.form-control {
-    color: #929292 !important;
-}
-
 label:not(.form-check-label):not(.custom-file-label) {
     font-weight: 500 !important;
     font-family: 'Outfit', sans-serif;
@@ -271,6 +267,11 @@ div:where(.swal2-container) .swal2-html-container {
 
 .table tbody tr:last-child td {
     border-width: 0;
+}
+
+.table-bordered tbody tr:last-child {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 .table-bordered tbody tr:last-child td {
