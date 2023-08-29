@@ -134,27 +134,16 @@
                                         </p>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <a href="{{ url('adminduk/keluarga/' . $item->no_kk) }}"
-                                            class="btn btn-xs btn-info" data-toggle="tooltip"
-                                            data-original-title="Detai Keluarga">
+                                        <a href="{{ url('adminduk/keluarga/' . $item->id) }}" class="btn btn-xs btn-info"
+                                            data-toggle="tooltip" title="Detail Keluarga">
                                             <i class="fad fa-list text-white text-xs"></i>
                                         </a>
                                         <a href="{{ url('adminduk/keluarga/' . $item->id . '/edit') }}"
-                                            class="btn btn-xs btn-warning" data-toggle="tooltip"
-                                            data-original-title="Edit Keluarga">
+                                            class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit Keluarga">
                                             <i class="fad fa-pencil text-white text-xs"></i>
                                         </a>
-                                        {{-- <a href="#" type="button" class="btn btn-xs btn-warning"
-                                            data-toggle="tooltip" data-original-title="Edit user" data-toggle="modal"
-                                            data-id="{{ $item->id }}" data-target="#edit-{{ $item->id }}">
-                                            <i class="fad fa-pencil text-white text-xs"></i>
-                                        </a> --}}
-                                        {{-- <button type="button" data-toggle="modal" data-id="{{ $item->id }}"
-                                            data-target="#edit{{ $item->id }}" class="btn btn-xs btn-warning">
-                                            <i class="fad fa-pencil text-white text-xs"></i>
-                                        </button> --}}
                                         <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="tooltip"
-                                            data-original-title="Delete user">
+                                            title="Delete user">
                                             <i class="fad fa-trash-can text-white text-xs"></i>
                                         </a>
                                     </td>
