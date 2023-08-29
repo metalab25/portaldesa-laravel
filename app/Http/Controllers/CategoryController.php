@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Desa;
 use App\Models\Config;
 use App\Models\Category;
+use App\Models\CategoryType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -23,7 +24,8 @@ class CategoryController extends Controller
             'user'          => Auth::user(),
             'desa'          => Desa::find(1),
             'config'        => $data,
-            'categories'    => Category::all()
+            'types'         => CategoryType::all(),
+            'categories'    => Category::orderBy('name', 'asc')->get()
         ]);
     }
 
@@ -40,10 +42,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name'          =>  'required',
-            'slug'          =>  'required|unique:categories',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'name'              =>  'required',
+                'slug'              =>  'required|unique:categories',
+                'category_type_id'  =>  'required'
+            ],
+            [
+                'name.required'             => 'Nama Kategori harus isi',
+                'slug.required'             => 'Slug Kategori harus isi',
+                'category_type_id.required' => 'Tipe Kategori harus pilih',
+            ]
+        );
 
         $validatedData['active'] = 1;
 
@@ -73,8 +83,9 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $rules = [
-            'name'          =>  'required',
-            'slug'          =>  'required',
+            'name'              =>  'required',
+            'slug'              =>  'required',
+            'category_type_id'  =>  'required'
         ];
 
         $validatedData = $request->validate($rules);
