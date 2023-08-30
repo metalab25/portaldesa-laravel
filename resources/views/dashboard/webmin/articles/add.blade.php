@@ -15,18 +15,28 @@
                         <div class="form-group mb-2">
                             <label for="title" class="form-label text-sm opacity-8">Judul</label>
                             <input type="text" class="form-control form-control-sm @error('title') is-invalid @enderror"
-                                name="title" id="title" placeholder="Tulis judul artikel...">
+                                name="title" id="title" placeholder="Tulis judul artikel..."
+                                value="{{ old('title') }}">
                             @error('title')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <input type="hidden" class="form-control form-control-sm" id="slug" name="slug">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="slug" class="form-label text-sm opacity-8">Slug</label>
+                            <input type="text" class="form-control form-control-sm" id="slug" name="slug"
+                                readonly>
+                            @error('slug')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="form-group mb-0">
                             <label for="body" class="form-label text-sm opacity-8">Isi Artikel</label>
-                            <textarea id="body" name="body" class="form-control block w-full mt-1 @error('isi') is-invalid @enderror">{{ old('isi') }}</textarea>
-                            @error('isi')
+                            <textarea id="body" name="body" class="form-control block w-full mt-1 @error('body') is-invalid @enderror">{{ old('body') }}</textarea>
+                            @error('body')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -113,15 +123,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-3">
+                <div class="col-xl-3 col-md-3 mb-2">
                     <div class="card p-3">
-                        <div class="form-group mb-2">
+                        <div class="form-group mb-1">
                             <label for="category_id" class="form-label text-sm opacity-8">Kategori Artikel</label>
                             <select name="category_id" id="category_id"
                                 class="form-control form-control-sm @error('category_id') is-invalid @enderror">
                                 <option value="">-- Pilih Kategori Artikel --</option>
                                 @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @if (old('category_id') == $item->id)
+                                        <option value="{{ $item->id }}" selected>
+                                            {{ $item->name }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $item->id }}"> {{ $item->name }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -130,14 +147,9 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mb-2">
-                            <label for="link_embed" class="form-label text-sm opacity-8">Link Embed</label>
-                            <input type="text" class="form-control form-control-sm" name="link_embed" id="link_embed"
-                                placeholder="Tulis judul artikel...">
-                        </div>
                     </div>
                     <div class="card">
-                        <div class="card-header px-3 pb-1">
+                        <div class="card-header px-3">
                             <h5 class="card-title text-sm font-outfit font-weight-500 opacity-8">Gambar Artikel</h5>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"
@@ -146,8 +158,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body px-3 pt-0">
-                            <div class="form-group mb-0">
+                        <div class="card-body px-3 pt-0 mb-n2">
+                            <div class="form-group mb-2">
                                 <div class="d-flex justify-content-center">
                                     <img src="/assets/img/no-picture.webp"
                                         class="image-preview img-rounded img-fluid d-block mx-auto mb-2">
@@ -169,7 +181,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header px-3 pb-0">
+                        <div class="card-header px-3">
                             <h5 class="card-title text-sm font-outfit font-weight-500 opacity-8">Pengaturan Lain</h5>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"
@@ -178,26 +190,77 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body px-3 pt-0">
+                        <div class="card-body px-3 pt-0 mt-n2">
                             <div class="form-group mb-2">
                                 <label for="link_embed" class="form-label text-sm opacity-8">Link Embed</label>
                                 <input type="url" class="form-control form-control-sm" name="link_embed"
                                     id="link_embed"
-                                    placeholder="Contoh : https://youtu.be/HR_Piu6qtoI?si=vehl5oEUlotpJxqu">
+                                    placeholder="Contoh : https://youtu.be/HR_Piu6qtoI?si=vehl5oEUlotpJxqu"
+                                    value="{{ old('link_embed') }}">
                             </div>
                             <div class="form-group mb-2">
                                 <label for="sumber_berita" class="form-label text-sm opacity-8">Sumber Berita</label>
                                 <input type="text" class="form-control form-control-sm" name="sumber_berita"
-                                    id="sumber_berita" placeholder="Contoh : Detik">
+                                    id="sumber_berita" placeholder="Contoh : Detik" value="{{ old('sumber_berita') }}">
                             </div>
                             <div class="form-group mb-2">
                                 <label for="link_sumber_berita" class="form-label text-sm opacity-8">Link Sumber</label>
                                 <input type="url" class="form-control form-control-sm" name="link_sumber_berita"
                                     id="link_sumber_berita"
-                                    placeholder="Contoh : https://youtu.be/HR_Piu6qtoI?si=vehl5oEUlotpJxqu">
+                                    placeholder="Contoh : https://youtu.be/HR_Piu6qtoI?si=vehl5oEUlotpJxqu"
+                                    value="{{ old('link_sumber_berita') }}">
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header px-3">
+                            <h5 class="card-title text-sm font-outfit font-weight-500 opacity-8">Pengaturan Lampiran
+                                Dokumen</h5>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body px-3 pt-0 mt-n2">
+                            <div class="form-group mb-2">
+                                <label for="dokumen" class="form-label text-sm opacity-8">Nama Dokumen</label>
+                                <input type="text" class="form-control form-control-sm" name="dokumen" id="dokumen"
+                                    placeholder="Contoh : Berkas Pengesahan" value="{{ old('dokumen') }}">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="link_dokumen" class="form-label text-sm opacity-8">Lampiran Dokumen</label>
+                                <input class="form-control form-control-sm @error('link_dokumen') is-invalid @enderror"
+                                    type="file" name="link_dokumen" id="link_dokumen">
+                                @error('link_dokumen')
+                                    <div class="invalid-feedback text-center">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header px-3">
+                            <h5 class="card-title text-sm font-outfit font-weight-500 opacity-8">Pengaturan Agenda</h5>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body px-3 pt-0 mt-n2">
+                            <div class="form-group mb-0">
+                                <label for="tgl_agenda" class="form-label text-sm opacity-8">Tanggal Kegiatan</label>
+                                <input type="date" class="form-control form-control-sm" name="tgl_agenda"
+                                    id="tgl_agenda" value="{{ old('tgl_agenda') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <a href="" class="btn btn-sm btn-danger mb-2">Batal</a>
+                    <button class="btn btn-primary btn-sm pull-right mb-2">Simpan</button>
                 </div>
             </div>
         </form>
@@ -363,5 +426,61 @@
                 'TableOfContents'
             ]
         });
+
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.image-preview');
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onLoad = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+            const blob = URL.createObjectURL(image.files[0]);
+            imgPreview.src = blob;
+        }
+
+        function previewImage1() {
+            const image1 = document.querySelector('#image1');
+            const imgPreview = document.querySelector('.image1-preview');
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image1.files[0]);
+
+            oFReader.onLoad = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+            const blob = URL.createObjectURL(image1.files[0]);
+            imgPreview.src = blob;
+        }
+
+        function previewImage2() {
+            const image2 = document.querySelector('#image2');
+            const imgPreview = document.querySelector('.image2-preview');
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image2.files[0]);
+
+            oFReader.onLoad = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+            const blob = URL.createObjectURL(image2.files[0]);
+            imgPreview.src = blob;
+        }
+
+        function previewImage3() {
+            const image3 = document.querySelector('#image3');
+            const imgPreview = document.querySelector('.image3-preview');
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image3.files[0]);
+
+            oFReader.onLoad = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+            const blob = URL.createObjectURL(image3.files[0]);
+            imgPreview.src = blob;
+        }
     </script>
 @endsection

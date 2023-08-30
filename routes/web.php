@@ -55,7 +55,7 @@ Route::get('webmin/categories/checkSlug', [CategoryController::class, 'checkSlug
 
 // webmin > Kategori
 Route::resource('webmin/article', ArticleController::class)->middleware('auth', 'admin', 'operator');
-Route::get('webmin/article/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+Route::get('webmin/article/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
 
 Route::get('setting/application', [ConfigController::class, 'index'])->name('application')->middleware('auth', 'admin');
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');

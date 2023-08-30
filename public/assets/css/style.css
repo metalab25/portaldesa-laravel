@@ -433,12 +433,12 @@ div:where(.swal2-container) .swal2-html-container {
 }
 
 .ck-source-editing-area {
-    min-height: 200px;
+    min-height: 500px;
 }
 
 .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable,
 .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
-    min-height: 200px;
+    min-height: 500px;
     font-size: 0.875rem;
 }
 .logo-biodata {
