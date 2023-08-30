@@ -13,7 +13,7 @@
                     class="btn btn-primary btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block mb-1">Ubah
                     Biodata
                 </a>
-                <a href=""
+                <a href="{{ url('adminduk/penduduk/pdf/' . $penduduk->nik) }}"
                     class="btn btn-success btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block mb-1">Cetak
                     Biodata
                 </a>

@@ -46,6 +46,7 @@ Route::resource('wilayah/rt', RtController::class)->middleware('auth', 'admin');
 Route::resource('adminduk/keluarga', KeluargaController::class)->middleware('auth', 'admin', 'operator');
 // Kependudukan > Penduduk
 Route::resource('adminduk/penduduk', PendudukController::class)->middleware('auth', 'admin', 'operator');
+Route::get('adminduk/penduduk/pdf/{nik}', [PendudukController::class, 'get_pdf'])->middleware('auth', 'admin');
 
 // webmin > Kategori
 Route::resource('webmin/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');

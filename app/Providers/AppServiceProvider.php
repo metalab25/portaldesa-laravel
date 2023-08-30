@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         config(['app.locale' => 'id']);
-        Carbon::setLocale('id');
+        Carbon::setlocale(LC_ALL, 'id_ID');;
         date_default_timezone_set('Asia/Jakarta');
 
         Paginator::useBootstrap();

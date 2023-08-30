@@ -22,11 +22,12 @@ use Illuminate\Http\Request;
 use App\Models\JenisKelahiran;
 use App\Models\StatusPenduduk;
 use App\Models\Kewarganegaraan;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\HubunganKeluarga;
 use App\Models\PendidikanTempuh;
 use App\Models\TempatDilahirkan;
 use App\Models\PenolongKelahiran;
-use Faker\Provider\ar_EG\Person;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -172,6 +173,20 @@ class PendudukController extends Controller
             'desa'                  =>  Desa::find(1),
             'penduduk'              =>  $penduduk
         ]);
+    }
+
+    public function get_pdf($nik)
+    {
+        $penduduk = Penduduk::where('nik', $nik)->firstOrFail();
+        $pdf = Pdf::loadView(
+            'dashboard.kependudukan.penduduk.pdf',
+            [
+                'config'                =>  Config::find(1),
+                'desa'                  =>  Desa::find(1),
+                'penduduk'              =>  $penduduk
+            ]
+        );
+        return $pdf->download('biodata_' . $nik . '.pdf');
     }
 
     /**
