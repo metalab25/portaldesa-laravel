@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b>Version</b> {{ $config->current_version }}
+        Version {{ $config->current_version }}
     </div>
-    <strong>Copyright &copy; 2015-2023 <a href="#">{{ $config->nama_aplikasi }}</a>.</strong>
+    Copyright &copy; 2015-2023 <a href="#">{{ $config->nama_aplikasi }}</a>.
     All rights reserved.
 </footer>
 
@@ -18,6 +18,21 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.getElementById('topbar').classList.add('fixed-top');
+                // add padding top to show content behind navbar
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+            } else {
+                document.getElementById('topbar').classList.remove('fixed-top');
+                // remove padding top from body
+                document.body.style.paddingTop = '0';
+            }
+        });
     });
 </script>
 <!-- Bootstrap 4 -->

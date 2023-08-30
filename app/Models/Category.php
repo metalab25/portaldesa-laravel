@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\CategoryType;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -21,6 +22,11 @@ class Category extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function category_type()
+    {
+        return $this->belongsTo(CategoryType::class);
     }
 
     public function post()

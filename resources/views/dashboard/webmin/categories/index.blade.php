@@ -50,6 +50,9 @@
                                     Nama Kategori</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit">
+                                    Tipe Kategori</th>
+                                <th
+                                    class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit">
                                     Artikel</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit ps-3">
@@ -69,6 +72,11 @@
                                     <td>
                                         <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
                                             {{ $item->name }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="text-sm text-center text-secondary font-outfit mb-0">
+                                            {{ $item->category_type->name }}
                                         </p>
                                     </td>
                                     <td></td>

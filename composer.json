@@ -8,9 +8,11 @@
         "php": "^8.1",
         "cviebrock/eloquent-sluggable": "^10.0",
         "diglactic/laravel-breadcrumbs": "^8.1",
+        "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.8",
         "mpdf/mpdf": "^6.1",
         "realrashid/sweet-alert": "^7.1"
