@@ -64,7 +64,7 @@ class KeluargaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Keluarga $keluarga)
     {
         return view('dashboard.kependudukan.keluarga.details', [
             'user'              =>  Auth::user(),
@@ -74,8 +74,9 @@ class KeluargaController extends Controller
             'rws'               =>  Rw::orderBy('rw', 'asc')->get(),
             'rts'               =>  Rt::orderBy('rt', 'asc')->get(),
             'sosials'           =>  Sosial::orderBy('name', 'asc')->get(),
-            'penduduk'          =>  Penduduk::where('keluarga_id', $id)->firstOrFail(),
-            'keluarga'          =>  Keluarga::where('id', $id)->firstOrFail(),
+            'anggota'           =>  $keluarga->anggota,
+            'penduduk'          =>  $keluarga->penduduk,
+            'keluarga'          =>  $keluarga,
             // 'keluargas'          =>  Keluarga::where('no_kk', $no_kk)->firstOrFail()
         ]);
     }

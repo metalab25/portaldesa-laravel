@@ -157,6 +157,13 @@ hr.horizontal.dark {
     font-size: 0.875rem !important;
 }
 
+[class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active,
+[class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active:hover,
+[class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link.active:focus {
+    background-color: rgb(255 255 255 / 13%);
+    color: #ffffff;
+}
+
 label:not(.form-check-label):not(.custom-file-label) {
     font-weight: 500 !important;
     font-family: 'Outfit', sans-serif;

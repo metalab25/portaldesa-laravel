@@ -9,12 +9,14 @@ use App\Models\Wilayah;
 use App\Models\Penduduk;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Keluarga extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded  = ['id'];
+    protected $table    = 'keluargas';
 
     public function getCreatedAtAttribute()
     {
@@ -44,6 +46,11 @@ class Keluarga extends Model
     public function penduduk()
     {
         return $this->belongsTo(Penduduk::class);
+    }
+
+    public function anggota(): HasMany
+    {
+        return $this->hasMany(Penduduk::class);
     }
 
     public function kelamin()
