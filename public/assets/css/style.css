@@ -1,3 +1,7 @@
+:root {
+    --ck-border-radius: 0.5rem !important;
+}
+
 /* Google Font Start */
 .font-quicksand {
     font-family: 'Quicksand', sans-serif !important;
@@ -426,6 +430,16 @@ div:where(.swal2-container) .swal2-html-container {
 
 .border-bottom-1 {
     border-bottom: 1px solid #ddd !important;
+}
+
+.ck-source-editing-area {
+    min-height: 200px;
+}
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable,
+.ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    min-height: 200px;
+    font-size: 0.875rem;
 }
 
 @media (max-width: 640px) {
