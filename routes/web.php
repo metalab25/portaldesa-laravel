@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
@@ -8,7 +7,9 @@ use App\Http\Controllers\DesaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\DashboardController;
@@ -51,6 +52,10 @@ Route::get('adminduk/penduduk/pdf/{nik}', [PendudukController::class, 'get_pdf']
 // webmin > Kategori
 Route::resource('webmin/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
 Route::get('webmin/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+
+// webmin > Kategori
+Route::resource('webmin/article', ArticleController::class)->middleware('auth', 'admin', 'operator');
+Route::get('webmin/article/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
 
 Route::get('setting/application', [ConfigController::class, 'index'])->name('application')->middleware('auth', 'admin');
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');
