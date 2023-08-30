@@ -441,6 +441,14 @@ div:where(.swal2-container) .swal2-html-container {
     min-height: 200px;
     font-size: 0.875rem;
 }
+.logo-biodata {
+    width: 50px;
+}
+
+.foto-biodata {
+    width: 150px;
+    height: 180px;
+}
 
 @media (max-width: 640px) {
     .card-header {
