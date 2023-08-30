@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -26,6 +27,7 @@ class ArticleController extends Controller
             'categories'    => Category::orderBy('name', 'asc')->get()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
