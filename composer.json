@@ -14,7 +14,6 @@
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.8",
-        "mpdf/mpdf": "^6.1",
         "realrashid/sweet-alert": "^7.1",
         "spatie/laravel-permission": "^5.10",
         "staudenmeir/eloquent-has-many-deep": "^1.18"
