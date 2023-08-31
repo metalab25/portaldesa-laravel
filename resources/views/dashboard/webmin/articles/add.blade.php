@@ -7,7 +7,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{ url('webmin/article/') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('posts/') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xl-9 col-md-9">
@@ -259,7 +259,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ url('webmin/article') }}" class="btn btn-sm btn-danger mb-2">Batal</a>
+                    <a href="{{ url('posts') }}" class="btn btn-sm btn-danger mb-2">Batal</a>
                     <button class="btn btn-primary btn-sm pull-right mb-2">Simpan</button>
                 </div>
             </div>

@@ -62,14 +62,14 @@ Breadcrumbs::for('webmin', function (BreadcrumbTrail $trail) {
     $trail->push('Webmin');
 });
 
+Breadcrumbs::for('article', function (BreadcrumbTrail $trail) {
+    $trail->parent('webmin');
+    $trail->push('Artikel', url('posts'));
+});
+
 Breadcrumbs::for('categories', function (BreadcrumbTrail $trail) {
     $trail->parent('webmin');
     $trail->push('Kategori', url('webmin/categories'));
-});
-
-Breadcrumbs::for('article', function (BreadcrumbTrail $trail) {
-    $trail->parent('webmin');
-    $trail->push('Artikel', url('webmin/article'));
 });
 
 // Dashboard > Setting

@@ -94,7 +94,7 @@ class ArticleController extends Controller
 
         Article::create($validatedData);
         Alert::success('Berhasil', 'Artikel baru berhasil ditambahkan');
-        return redirect('webmin/article');
+        return redirect('posts');
     }
 
     /**
@@ -128,7 +128,7 @@ class ArticleController extends Controller
     {
         Article::destroy($article->id);
         Alert::success('Berhasil', 'Artikel berhasil dihapus');
-        return redirect('webmin/article');
+        return redirect('posts');
     }
 
     public function checkSlug(Request $request)
@@ -143,7 +143,7 @@ class ArticleController extends Controller
         $data = ($article->status == 1) ? 0 : 1;
         $article->update(['status' => $data]);
         Alert::success('Berhasil', 'Status artikel berhasil diubah');
-        return redirect('webmin/article');
+        return redirect('posts');
     }
 
     public function comment(Article $article, $id)
@@ -152,6 +152,6 @@ class ArticleController extends Controller
         $data = ($article->komentar == 1) ? 0 : 1;
         $article->update(['komentar' => $data]);
         Alert::success('Berhasil', 'Status komentar artikel berhasil diubah');
-        return redirect('webmin/article');
+        return redirect('posts');
     }
 }
