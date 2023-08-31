@@ -259,7 +259,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn btn-sm btn-danger mb-2">Batal</a>
+                    <a href="{{ url('webmin/article') }}" class="btn btn-sm btn-danger mb-2">Batal</a>
                     <button class="btn btn-primary btn-sm pull-right mb-2">Simpan</button>
                 </div>
             </div>

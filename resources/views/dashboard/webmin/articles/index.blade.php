@@ -45,16 +45,19 @@
                                 </th>
                                 <th
                                     class="text-uppercase text-secondary text-xs font-weight-600 opacity-7 font-outfit ps-3">
-                                    Nama Kategori</th>
+                                    Judul</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit">
-                                    Tipe Kategori</th>
+                                    Kategori</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit">
-                                    Artikel</th>
+                                    Status</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit ps-3">
-                                    Status</th>
+                                    Penulis</th>
+                                <th
+                                    class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit ps-3">
+                                    Tanggal Dipublish</th>
                                 <th
                                     class="text-uppercase text-center text-secondary text-xs font-weight-600 opacity-7 font-outfit ps-2">
                                     Action
@@ -62,49 +65,80 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($categories as $item)
-                                <tr>
-                                    <td class="ps-2">
-                                        <p class="text-center text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
-                                            {{ $item->name }}
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm text-center text-secondary font-outfit mb-0">
-                                            {{ $item->category_type->name }}
-                                        </p>
-                                    </td>
-                                    <td></td>
-                                    <td class="text-center">
-                                        @if ($item->active == 1)
-                                            <i class="fad fa-check text-success"></i>
-                                        @elseif($item->active == 0)
-                                            <i class="fad fa-lock text-danger"></i>
-                                        @endif
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <button class="btn btn-xs btn-warning" data-id="{{ $item->id }}"
-                                            data-toggle="modal" data-target="#edit{{ $item->id }}"
-                                            title="Edit Kategori">
-                                            <i class="fad fa-pencil text-white text-xs"></i>
-                                        </button>
-                                        <form action="/webmin/categories/{{ $item->id }}" method="POST"
-                                            class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn btn-xs btn-danger"
-                                                onclick="return confirm ('Anda yakin akan menghapus ketegori ini ?')">
-                                                <i class="fad fa-trash-can text-white text-xs"></i>
+                            @foreach ($articles as $item)
+                                <td class="ps-2">
+                                    <p class="text-center text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
+                                        {{ $item->title }}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="text-sm text-center text-secondary font-outfit mb-0">
+                                        {{ $item->category->name }}
+                                    </p>
+                                </td>
+                                <td class="text-sm text-center text-secondary font-outfit mb-0">
+                                    @if ($item->status == 1)
+                                        <i class="fad fa-check text-success mt-1"></i>
+                                    @else
+                                        <i class="fad fa-lock text-danger mt-1"></i>
+                                    @endif
+                                </td>
+                                <td>
+                                    <p class="text-sm text-center text-secondary font-outfit mb-0">
+                                        {{ $item->user->name }}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="text-sm text-center text-secondary font-outfit mb-0">
+                                        {{ $item->created_at }}
+                                    </p>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <button class="btn btn-xs btn-warning" data-id="{{ $item->id }}" data-toggle="modal"
+                                        data-target="#edit{{ $item->id }}" title="Edit Kategori">
+                                        <i class="fad fa-pencil text-white text-xs"></i>
+                                    </button>
+                                    <form action="{{ route('article.status', $item->id) }}" method="POST" class="d-inline">
+                                        @method('PATCH')
+                                        @csrf
+                                        @if ($item->status == 0)
+                                            <button type="submit" class="btn btn-xs btn-dark" value="1">
+                                                <i class="fad fa-toggle-on text-white text-xs"></i>
                                             </button>
-                                        </form>
-
-                                    </td>
-                                    @include('dashboard.webmin.categories.modal-edit')
-                                </tr>
-                            @endforeach --}}
+                                        @elseif ($item->status == 1)
+                                            <button type="submit" class="btn btn-xs btn-success" value="0">
+                                                <i class="fad fa-toggle-off text-white text-xs"></i>
+                                            </button>
+                                        @endif
+                                    </form>
+                                    <form action="{{ route('article.comment', $item->id) }}" method="POST"
+                                        class="d-inline">
+                                        @method('PATCH')
+                                        @csrf
+                                        @if ($item->komentar == 0)
+                                            <button type="submit" class="btn btn-xs btn-dark" value="1">
+                                                <i class="fad fa-comments text-white text-xs"></i>
+                                            </button>
+                                        @elseif ($item->komentar == 1)
+                                            <button type="submit" class="btn btn-xs btn-info" value="0">
+                                                <i class="fad fa-comments text-white text-xs"></i>
+                                            </button>
+                                        @endif
+                                    </form>
+                                    <form action="/webmin/article/{{ $item->id, $item->id }}" method="POST"
+                                        class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-xs btn-danger"
+                                            onclick="return confirm ('Anda yakin akan menghapus ketegori ini ?')">
+                                            <i class="fad fa-trash-can text-white text-xs"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -21,10 +21,11 @@ class ArticleController extends Controller
     public function index()
     {
         return view('dashboard.webmin.articles.index', [
-            'user'          => Auth::user(),
-            'desa'          => Desa::find(1),
+            'user'          =>  Auth::user(),
+            'desa'          =>  Desa::find(1),
             'config'        =>  Config::find(1),
-            'categories'    => Category::orderBy('name', 'asc')->get()
+            'categories'    =>  Category::orderBy('name', 'asc')->get(),
+            'articles'      =>  Article::orderBy('created_at', 'asc')->get()
         ]);
     }
 
@@ -101,7 +102,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $article->increment('views');
     }
 
     /**
@@ -132,5 +133,23 @@ class ArticleController extends Controller
     {
         $slug = SlugService::createSlug(Article::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
+    }
+
+    public function status(Article $article, $id)
+    {
+        $article = Article::find($id);
+        $data = ($article->status == 1) ? 0 : 1;
+        $article->update(['status' => $data]);
+        Alert::success('Berhasil', 'Status artikel berhasil diubah');
+        return redirect('webmin/article');
+    }
+
+    public function comment(Article $article, $id)
+    {
+        $article = Article::find($id);
+        $data = ($article->komentar == 1) ? 0 : 1;
+        $article->update(['komentar' => $data]);
+        Alert::success('Berhasil', 'Status komentar artikel berhasil diubah');
+        return redirect('webmin/article');
     }
 }
