@@ -128,8 +128,7 @@
                                             </button>
                                         @endif
                                     </form>
-                                    <form action="/webmin/article/{{ $item->id, $item->id }}" method="POST"
-                                        class="d-inline">
+                                    <form action="/webmin/article/{{ $item->id }}" method="POST" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <button class="btn btn-xs btn-danger"
