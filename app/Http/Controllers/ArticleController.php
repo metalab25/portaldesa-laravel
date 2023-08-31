@@ -24,7 +24,7 @@ class ArticleController extends Controller
             'user'          =>  Auth::user(),
             'desa'          =>  Desa::find(1),
             'config'        =>  Config::find(1),
-            'categories'    =>  Category::orderBy('name', 'asc')->get(),
+            'dinamis'       =>  Category::orderBy('name', 'asc')->where('category_type_id', 1)->get(),
             'articles'      =>  Article::orderBy('created_at', 'asc')->get()
         ]);
     }
