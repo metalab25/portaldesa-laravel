@@ -126,7 +126,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        Article::destroy($article->id);
+        Alert::success('Berhasil', 'Artikel berhasil dihapus');
+        return redirect('webmin/article');
     }
 
     public function checkSlug(Request $request)
