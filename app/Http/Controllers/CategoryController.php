@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Desa;
 use App\Models\Config;
+use App\Models\Article;
 use App\Models\Category;
 use App\Models\CategoryType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -25,7 +27,8 @@ class CategoryController extends Controller
             'desa'          => Desa::find(1),
             'config'        => $data,
             'types'         => CategoryType::all(),
-            'categories'    => Category::orderBy('name', 'asc')->get()
+            'categories'    => Category::orderBy('name', 'asc')->get(),
+            'count_post'    => Article::orderBy('name', 'asc')->count(),
         ]);
     }
 
@@ -67,7 +70,16 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $data   = Config::find(1);
+        return view('dashboard.webmin.categories.details', [
+            'user'          => Auth::user(),
+            'desa'          => Desa::find(1),
+            'config'        => $data,
+            'types'         => CategoryType::all(),
+            'dinamis'       => Category::orderBy('name', 'asc')->where('category_type_id', 1)->get(),
+            'category'      => $category,
+            'articles'      => $category->post,
+        ]);
     }
 
     /**

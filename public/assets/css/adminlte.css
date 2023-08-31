@@ -5587,7 +5587,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 .list-group-item-action {
@@ -5637,6 +5637,20 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+
+.list-group-item.active:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.list-group-item:hover {
+    z-index: 2;
+    /* color: #fff; */
+    background-color: #ddd;
+    border-color: #ddd;
 }
 
 .list-group-item + .list-group-item {
