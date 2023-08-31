@@ -152,8 +152,8 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ url('webmin/article') }}"
-                            class="nav-link {{ request()->segment(2) == 'article' ? 'active' : '' }} font-weight-lighter">
+                        <a href="{{ url('posts') }}"
+                            class="nav-link {{ request()->segment(2) == 'posts' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-memo-pad nav-icon"></i>
                             <p>Artikel</p>
                         </a>

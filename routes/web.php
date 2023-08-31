@@ -49,16 +49,15 @@ Route::resource('adminduk/keluarga', KeluargaController::class)->middleware('aut
 Route::resource('adminduk/penduduk', PendudukController::class)->middleware('auth', 'admin', 'operator');
 Route::get('adminduk/penduduk/pdf/{nik}', [PendudukController::class, 'get_pdf'])->middleware('auth', 'admin');
 
+// webmin > Artikel
+Route::resource('posts', ArticleController::class)->middleware('auth', 'admin', 'operator');
+Route::get('posts/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
+Route::patch('posts/status/{id}', [ArticleController::class, 'status'])->name('posts.status')->middleware('auth', 'admin');
+Route::patch('posts/comment/{id}', [ArticleController::class, 'comment'])->name('posts.comment')->middleware('auth', 'admin');
+
 // webmin > Kategori
 Route::resource('webmin/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
 Route::get('webmin/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
-
-// webmin > Kategori
-Route::resource('webmin/article', ArticleController::class)->middleware('auth', 'admin', 'operator');
-Route::get('webmin/article/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
-Route::get('webmin/article/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
-Route::patch('webmin/article/status/{id}', [ArticleController::class, 'status'])->name('article.status')->middleware('auth', 'admin');
-Route::patch('webmin/article/comment/{id}', [ArticleController::class, 'comment'])->name('article.comment')->middleware('auth', 'admin');
 
 Route::get('setting/application', [ConfigController::class, 'index'])->name('application')->middleware('auth', 'admin');
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');
