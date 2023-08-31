@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url('webmin/categories') }}" method="POST">
+            <form action="{{ url('posts/categories') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group mb-2">

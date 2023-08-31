@@ -17,7 +17,7 @@
                         <ul class="list-group mb-0 pt-1">
                             @foreach ($dinamis as $item)
                                 <li class="list-group-item text-sm {{ request()->segment(3) == $item->id ? 'active' : '' }}">
-                                    <a href="{{ url('webmin/categories/' . $item->id) }}">
+                                    <a href="{{ url('posts/categories/' . $item->id) }}">
                                         {{ $item->name }}
                                     </a>
                                 </li>
@@ -50,8 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-md-1">
-                                <a href="{{ url('webmin/article/create') }}"
-                                    class="btn btn-sm btn-block btn-primary mb-2">Tambah</a>
+                                <a href="{{ url('posts/create') }}" class="btn btn-sm btn-block btn-primary mb-2">Tambah</a>
                             </div>
                         </div>
                     </div>
@@ -127,7 +126,7 @@
                                                 title="Edit Kategori">
                                                 <i class="fad fa-pencil text-white text-xs"></i>
                                             </button>
-                                            <form action="{{ route('article.status', $item->id) }}" method="POST"
+                                            <form action="{{ route('posts.status', $item->id) }}" method="POST"
                                                 class="d-inline">
                                                 @method('PATCH')
                                                 @csrf
@@ -141,7 +140,7 @@
                                                     </button>
                                                 @endif
                                             </form>
-                                            <form action="{{ route('article.comment', $item->id) }}" method="POST"
+                                            <form action="{{ route('posts.comment', $item->id) }}" method="POST"
                                                 class="d-inline">
                                                 @method('PATCH')
                                                 @csrf
@@ -155,8 +154,7 @@
                                                     </button>
                                                 @endif
                                             </form>
-                                            <form action="/webmin/article/{{ $item->id }}" method="POST"
-                                                class="d-inline">
+                                            <form action="/posts/{{ $item->id }}" method="POST" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-xs btn-danger"
