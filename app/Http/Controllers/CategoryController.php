@@ -62,7 +62,7 @@ class CategoryController extends Controller
 
         Category::create($validatedData);
         Alert::success('Berhasil', 'Kategori baru berhasil ditambahkan');
-        return redirect('webmin/categories');
+        return redirect('posts/categories');
     }
 
     /**
@@ -104,7 +104,7 @@ class CategoryController extends Controller
 
         Category::where('id', $category->id)->update($validatedData);
         Alert::success('Berhasil', 'Kategori berhasil diperbaharui');
-        return redirect('webmin/categories');
+        return redirect('posts/categories');
     }
 
     /**
@@ -114,7 +114,7 @@ class CategoryController extends Controller
     {
         Category::destroy($category->id);
         Alert::success('Berhasil', 'Kategori berhasil dihapus');
-        return redirect('webmin/categories');
+        return redirect('posts/categories');
     }
 
     public function checkSlug(Request $request)
