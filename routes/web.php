@@ -10,6 +10,7 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\DashboardController;
@@ -58,6 +59,11 @@ Route::patch('posts/comment/{id}', [ArticleController::class, 'comment'])->name(
 // webmin > Kategori
 Route::resource('posts/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
 Route::get('posts/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+
+// webmin > Dokumen
+Route::resource('webmin/documents', DocumentController::class)->middleware('auth', 'admin', 'operator');
+Route::get('webmin/documents/checkSlug', [DocumentController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+Route::post('webmin/documents/', [DocumentController::class, 'storePublicDoc'])->middleware('auth', 'admin');
 
 Route::get('setting/application', [ConfigController::class, 'index'])->name('application')->middleware('auth', 'admin');
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');
