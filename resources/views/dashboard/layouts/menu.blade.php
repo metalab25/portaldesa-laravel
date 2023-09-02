@@ -153,7 +153,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{ url('posts') }}"
-                            class="nav-link {{ request()->segment(2) == 'posts' ? 'active' : '' }} font-weight-lighter">
+                            class="nav-link {{ request()->segment(1) == 'posts' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-memo-pad nav-icon"></i>
                             <p>Artikel</p>
                         </a>
@@ -163,6 +163,13 @@
                             class="nav-link {{ request()->segment(2) == 'categories' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-grid-2 nav-icon"></i>
                             <p>Kategori</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('webmin/documents') }}"
+                            class="nav-link {{ request()->segment(2) == 'documents' ? 'active' : '' }} font-weight-lighter">
+                            <i class="fad fa-folder nav-icon"></i>
+                            <p>Dokumen Publik</p>
                         </a>
                     </li>
                     <li class="nav-item">
