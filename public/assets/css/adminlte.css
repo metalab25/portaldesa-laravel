@@ -3741,7 +3741,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
   background-color: #e9ecef;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
 }
 
 .input-group-text input[type="radio"],
@@ -5102,10 +5102,11 @@ input[type="button"].btn-block {
 .page-link {
   position: relative;
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.25rem 0.5rem;
   margin-left: -1px;
   line-height: 1.25;
   color: #007bff;
+  font-size: 0.875rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }

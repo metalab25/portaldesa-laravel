@@ -56,6 +56,18 @@ Breadcrumbs::for('penduduk', function (BreadcrumbTrail $trail) {
     $trail->push('Penduduk', url('adminduk/penduduk'));
 });
 
+// Dashboard > Sekretariat
+Breadcrumbs::for('secretariat', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Sekretariat');
+});
+
+// Dashboard > Sekretariat > Klasifikasi Surat
+Breadcrumbs::for('klasifikasi', function (BreadcrumbTrail $trail) {
+    $trail->parent('secretariat');
+    $trail->push('Klasifikasi Surat', url('sekretariat/klasifikasi'));
+});
+
 // Dashboard > Webmin
 Breadcrumbs::for('webmin', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

@@ -14,6 +14,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KlasifikasiSuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,9 @@ Route::resource('adminduk/keluarga', KeluargaController::class)->middleware('aut
 // Kependudukan > Penduduk
 Route::resource('adminduk/penduduk', PendudukController::class)->middleware('auth', 'admin', 'operator');
 Route::get('adminduk/penduduk/pdf/{nik}', [PendudukController::class, 'get_pdf'])->middleware('auth', 'admin');
+
+// Sekretariat > Klasifikasi Surat
+Route::resource('sekretariat/klasifikasi', KlasifikasiSuratController::class)->middleware('auth', 'admin');
 
 // webmin > Artikel
 Route::resource('posts', ArticleController::class)->middleware('auth', 'admin', 'operator');
