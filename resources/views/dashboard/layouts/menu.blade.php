@@ -75,9 +75,9 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item {{ request()->segment(1) == 'secretariat' ? 'menu-open' : '' }}">
+            <li class="nav-item {{ request()->segment(1) == 'sekretariat' ? 'menu-open' : '' }}">
                 <a href="#"
-                    class="nav-link {{ request()->segment(1) == 'secretariat' ? 'active' : '' }} text-white">
+                    class="nav-link {{ request()->segment(1) == 'sekretariat' ? 'active' : '' }} text-white">
                     <i class="nav-icon fad fa-box-archive"></i>
                     <p>
                         Sekretariat
@@ -111,6 +111,13 @@
                             class="nav-link {{ request()->segment(2) == 'pamong' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-file-shield nav-icon"></i>
                             <p>Peraturan {{ $config->sebutan_desa }}</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('sekretariat/klasifikasi') }}"
+                            class="nav-link {{ request()->segment(2) == 'klasifikasi' ? 'active' : '' }} font-weight-lighter">
+                            <i class="fad fa-code nav-icon"></i>
+                            <p>Klasifikasi Surat</p>
                         </a>
                     </li>
                 </ul>
