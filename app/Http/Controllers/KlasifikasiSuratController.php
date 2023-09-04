@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Desa;
 use App\Models\Config;
 use App\Models\KlasifikasiSurat;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class KlasifikasiSuratController extends Controller
@@ -22,5 +23,11 @@ class KlasifikasiSuratController extends Controller
             'config'        => $data,
             'klasifikasi'   => KlasifikasiSurat::orderBy('kode', 'asc')->filter(request(['search']))->paginate(12)->withQueryString()
         ]);
+    }
+
+    public function selectSearch()
+    {
+        $data = KlasifikasiSurat::where('nama', 'LIKE', '%' . request('q') . '%')->paginate(10);
+        return response()->json($data);
     }
 }
