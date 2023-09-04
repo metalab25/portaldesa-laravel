@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('pengirim')->nullable();
             $table->string('perihal_surat')->nullable();
             $table->string('attach')->nullable();
+            $table->foreignId('pamong_id')->nullable();
             $table->string('isi_disposisi')->nullable();
             $table->timestamps();
         });

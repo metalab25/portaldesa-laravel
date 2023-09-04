@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Desa;
 use App\Models\Config;
+use App\Models\Pamong;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use App\Models\KlasifikasiSurat;
@@ -47,6 +48,7 @@ class SuratMasukController extends Controller
             'desa'          => Desa::find(1),
             'config'        => $data,
             'klasifikasi'   => KlasifikasiSurat::all(),
+            'pamong'        => Pamong::all()->where('status', 1),
             'nomor_urut'    => $urut
         ]);
     }
