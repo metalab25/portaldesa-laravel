@@ -46,6 +46,13 @@ class PendudukController extends Controller
         ]);
     }
 
+    // Get Penduduk
+    public function selectSearch()
+    {
+        $data = Penduduk::where('nama', 'LIKE', '%' . request('q') . '%')->orWhere('nik', 'LIKE', '%' . request('q') . '%')->paginate(10);
+        return response()->json($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

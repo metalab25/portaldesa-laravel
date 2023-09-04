@@ -35,10 +35,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html"
+                        <a href="{{ url('desa/pamong') }}"
                             class="nav-link {{ request()->segment(2) == 'pamong' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-sitemap nav-icon"></i>
-                            <p>Pemerintahan</p>
+                            <p>Pemerintahan {{ $config->sebutan_desa }}</p>
                         </a>
                     </li>
                 </ul>
