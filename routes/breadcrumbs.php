@@ -74,6 +74,12 @@ Breadcrumbs::for('surat_keluar', function (BreadcrumbTrail $trail) {
     $trail->push('Surat Keluar', url('sekretariat/surat_keluar'));
 });
 
+// Dashboard > Sekretariat > Surat Masuk
+Breadcrumbs::for('surat_masuk', function (BreadcrumbTrail $trail) {
+    $trail->parent('secretariat');
+    $trail->push('Surat Masuk', url('sekretariat/surat_masuk'));
+});
+
 // Dashboard > Webmin
 Breadcrumbs::for('webmin', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

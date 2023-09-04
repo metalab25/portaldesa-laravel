@@ -86,8 +86,8 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="../../index2.html"
-                            class="nav-link {{ request()->segment(2) == 'keluarga' ? 'active' : '' }} font-weight-lighter">
+                        <a href="{{ url('sekretariat/surat_masuk') }}"
+                            class="nav-link {{ request()->segment(2) == 'surat_masuk' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-file-arrow-down nav-icon"></i>
                             <p>Surat Masuk</p>
                         </a>

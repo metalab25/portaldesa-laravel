@@ -27,7 +27,7 @@ class KlasifikasiSuratController extends Controller
 
     public function selectSearch()
     {
-        $data = KlasifikasiSurat::where('nama', 'LIKE', '%' . request('q') . '%')->paginate(10);
+        $data = KlasifikasiSurat::where('nama', 'LIKE', '%' . request('q') . '%')->orWhere('kode', 'LIKE', '%' . request('q') . '%')->paginate(10);
         return response()->json($data);
     }
 }
