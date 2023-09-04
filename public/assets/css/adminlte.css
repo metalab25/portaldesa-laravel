@@ -35657,6 +35657,8 @@ body.iframe-mode-fullscreen .content-wrapper.iframe-mode {
 .select2-container--default .select2-dropdown .select2-search__field,
 .select2-container--default .select2-search--inline .select2-search__field {
   border: 1px solid #ced4da;
+  font-size: 0.875rem;
+  border-radius: 0.35rem;
 }
 
 .select2-container--default .select2-dropdown .select2-search__field:focus,
