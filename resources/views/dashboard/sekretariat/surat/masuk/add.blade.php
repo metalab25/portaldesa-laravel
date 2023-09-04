@@ -123,11 +123,32 @@
                 </div>
                 <div class="row form-group mb-2">
                     <div class="col-md-3">
+                        <label for="pamong_id" class="form-label text-sm align-middle opacity-8">Disposisi</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select name="pamong_id" id="pamong_id"
+                            class="form-control form-control-sm @error('pamong_id') is-invalid @enderror">
+                            <option value="">-- Pilih Disposisi --</option>
+                            @foreach ($pamong as $item)
+                                @if (old('pamong_id') == $item->id)
+                                    <option value="{{ $item->id }}" selected>
+                                        {{ $item->jabatan }}
+                                    </option>
+                                @else
+                                    <option value="{{ $item->id }}"> {{ $item->jabatan }}
+                                    </option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group mb-2">
+                    <div class="col-md-3">
                         <label for="isi_disposisi" class="form-label text-sm align-middle opacity-8">Isi Disposisi</label>
                     </div>
                     <div class="col-md-8">
-                        <textarea name="isi_disposisi" id="isi_disposisi" cols="30" rows="5" class="form-control form-control-sm"
-                            placeholder="Tuliskan isi disposisi surat">{{ old('isi_disposisi') }}</textarea>
+                        <textarea name="isi_disposisi" id="isi_disposisi" cols="30" rows="5"
+                            class="form-control form-control-sm" placeholder="Tuliskan isi disposisi surat">{{ old('isi_disposisi') }}</textarea>
                     </div>
                 </div>
             </div>

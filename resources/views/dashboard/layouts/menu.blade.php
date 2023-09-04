@@ -100,15 +100,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html"
-                            class="nav-link {{ request()->segment(2) == 'pamong' ? 'active' : '' }} font-weight-lighter">
+                        <a href="../../index3.html" class="nav-link font-weight-lighter">
                             <i class="fad fa-file-circle-check nav-icon"></i>
                             <p>Surat Keputusan</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html"
-                            class="nav-link {{ request()->segment(2) == 'pamong' ? 'active' : '' }} font-weight-lighter">
+                        <a href="../../index3.html" class="nav-link font-weight-lighter">
                             <i class="fad fa-file-shield nav-icon"></i>
                             <p>Peraturan {{ $config->sebutan_desa }}</p>
                         </a>
