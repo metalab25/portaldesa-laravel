@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\KlasifikasiSuratController;
+use App\Http\Controllers\PamongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,16 +44,23 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 Route::get('desa/identitas', [DesaController::class, 'index'])->name('identitas')->middleware('auth', 'admin');
 Route::put('desa/identitas/{desa:id}', [DesaController::class, 'update'])->middleware('auth', 'admin');
-// Wilayah
+
+// Desa > Wilayah
 Route::resource('wilayah/cluster', WilayahController::class)->middleware('auth', 'admin');
 Route::resource('wilayah/rw', RwController::class)->middleware('auth', 'admin');
 Route::resource('wilayah/rt', RtController::class)->middleware('auth', 'admin');
+
+// Desa > Pemerintahan
+Route::resource('desa/pamong', PamongController::class)->middleware('auth', 'admin');
 
 // Kependudukan > Keluarga
 Route::resource('adminduk/keluarga', KeluargaController::class)->middleware('auth', 'admin', 'operator');
 // Kependudukan > Penduduk
 Route::resource('adminduk/penduduk', PendudukController::class)->middleware('auth', 'admin', 'operator');
 Route::get('adminduk/penduduk/pdf/{nik}', [PendudukController::class, 'get_pdf'])->middleware('auth', 'admin');
+
+// Get Penduduk
+Route::get('get_penduduk', [PendudukController::class, 'selectSearch'])->middleware('auth', 'admin');
 
 // Sekretariat > Klasifikasi Surat
 Route::resource('sekretariat/klasifikasi', KlasifikasiSuratController::class)->middleware('auth', 'admin');

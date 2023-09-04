@@ -14,9 +14,16 @@ Breadcrumbs::for('desa', function (BreadcrumbTrail $trail) {
     $trail->push('Desa');
 });
 
+// Desa > Identitdas
 Breadcrumbs::for('identitas', function (BreadcrumbTrail $trail) {
     $trail->parent('desa');
     $trail->push('Identitas Desa', url('desa/identitas'));
+});
+
+// Desa > Pemerintah
+Breadcrumbs::for('pamong', function (BreadcrumbTrail $trail) {
+    $trail->parent('desa');
+    $trail->push('Pemerintahan', url('desa/pamong'));
 });
 
 // Wilayah
