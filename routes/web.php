@@ -15,6 +15,8 @@ use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KlasifikasiSuratController;
+use App\Http\Controllers\SuratKeluarController;
+use App\Models\KlasifikasiSurat;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,12 @@ Route::get('adminduk/penduduk/pdf/{nik}', [PendudukController::class, 'get_pdf']
 
 // Sekretariat > Klasifikasi Surat
 Route::resource('sekretariat/klasifikasi', KlasifikasiSuratController::class)->middleware('auth', 'admin');
+
+// Sekretariat > Surat Keluar
+Route::resource('sekretariat/surat_keluar', SuratKeluarController::class)->middleware('auth', 'admin');
+
+// Get Klasifikasi Surat
+Route::get('get_klasifikasi', [KlasifikasiSuratController::class, 'selectSearch'])->middleware('auth', 'admin');
 
 // webmin > Artikel
 Route::resource('posts', ArticleController::class)->middleware('auth', 'admin', 'operator');

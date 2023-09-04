@@ -68,6 +68,12 @@ Breadcrumbs::for('klasifikasi', function (BreadcrumbTrail $trail) {
     $trail->push('Klasifikasi Surat', url('sekretariat/klasifikasi'));
 });
 
+// Dashboard > Sekretariat > Surat Keluar
+Breadcrumbs::for('surat_keluar', function (BreadcrumbTrail $trail) {
+    $trail->parent('secretariat');
+    $trail->push('Surat Keluar', url('sekretariat/surat_keluar'));
+});
+
 // Dashboard > Webmin
 Breadcrumbs::for('webmin', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

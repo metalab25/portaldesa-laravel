@@ -175,7 +175,6 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 .form-control-sm {
     border-radius: 0.35rem !important;
-    font-size: 0.8rem !important;
 }
 
 .content-header {
@@ -448,6 +447,24 @@ div:where(.swal2-container) .swal2-html-container {
 .foto-biodata {
     width: 150px;
     height: 180px;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0.35rem !important;
+}
+
+select.form-control-sm~.select2-container--default {
+    font-size: 0.875rem !important;
+    width: 100% !important;
+}
+
+.select2-container .select2-dropdown .select2-results ul .select2-results__option {
+    font-size: 0.875rem;
+    color: #7a7a7a;
+}
+
+.select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+    color: #fff;
 }
 
 @media (max-width: 640px) {

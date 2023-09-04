@@ -93,8 +93,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html"
-                            class="nav-link {{ request()->segment(2) == 'pamong' ? 'active' : '' }} font-weight-lighter">
+                        <a href="{{ url('sekretariat/surat_keluar') }}"
+                            class="nav-link {{ request()->segment(2) == 'surat_keluar' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-file-arrow-up nav-icon"></i>
                             <p>Surat Keluar</p>
                         </a>
