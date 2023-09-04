@@ -86,7 +86,7 @@
                                     class="form-control form-control-sm @error('jabatan') is-invalid @enderror text-sm"
                                     placeholder="Jabatan" value="{{ old('jabatan') }}">
                                 @error('jabatan')
-                                    <div class="invalid-feedback text-center">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
