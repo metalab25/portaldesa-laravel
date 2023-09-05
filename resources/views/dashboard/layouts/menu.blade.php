@@ -164,7 +164,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('posts/categories') }}"
+                        <a href="{{ url('webmin/categories') }}"
                             class="nav-link {{ request()->segment(2) == 'categories' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-grid-2 nav-icon"></i>
                             <p>Kategori</p>

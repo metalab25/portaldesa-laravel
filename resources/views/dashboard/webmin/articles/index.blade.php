@@ -17,7 +17,7 @@
                         <ul class="list-group">
                             @foreach ($dinamis as $item)
                                 <li class="list-group-item text-sm {{ request()->segment(2) == $item->id ? 'active' : '' }}">
-                                    <a href="{{ url('webmin/posts/categories/' . $item->id) }}">
+                                    <a href="{{ url('webmin/categories/' . $item->id) }}">
                                         {{ $item->name }}
                                     </a>
                                 </li>

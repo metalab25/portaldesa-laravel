@@ -81,8 +81,8 @@ Route::patch('webmin/posts/status/{id}', [ArticleController::class, 'status'])->
 Route::patch('webmin/posts/comment/{id}', [ArticleController::class, 'comment'])->name('posts.comment')->middleware('auth', 'admin');
 
 // webmin > Kategori
-Route::resource('posts/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
-Route::get('posts/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+Route::resource('webmin/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
+Route::get('webmin/categories/checkSlug', [CategoryController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
 
 // webmin > Dokumen
 Route::resource('webmin/documents', DocumentController::class)->middleware('auth', 'admin', 'operator');

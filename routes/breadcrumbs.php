@@ -95,7 +95,7 @@ Breadcrumbs::for('webmin', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('article', function (BreadcrumbTrail $trail) {
     $trail->parent('webmin');
-    $trail->push('Artikel', url('posts'));
+    $trail->push('Artikel', url('webmin/posts'));
 });
 
 Breadcrumbs::for('categories', function (BreadcrumbTrail $trail) {
