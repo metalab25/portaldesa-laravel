@@ -176,9 +176,7 @@
                                 return {
                                     id: item.id,
                                     text: [
-                                        item.kode,
-                                        ' - ',
-                                        item.nama
+                                        item.kode + ' - ' + item.nama
                                     ]
                                 }
                             })
