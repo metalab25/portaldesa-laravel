@@ -467,6 +467,35 @@ select.form-control-sm~.select2-container--default {
     color: #fff;
 }
 
+.btn.btn-icon-only {
+    width: 2.375rem;
+    height: 2.375rem;
+    padding: 0.7rem;
+}
+
+.btn.btn-rounded {
+    border-radius: 1.875rem;
+}
+
+.btn-group-sm>.btn.btn-icon-only,
+.btn.btn-sm.btn-icon-only {
+    width: 1.5875rem;
+    height: 1.5875rem;
+    padding: 0.3rem;
+}
+
+.btn-group-sm>.btn i,
+.btn.btn-sm i {
+    font-size: 0.5rem;
+}
+
+.list-group-item:last-child hr {
+    margin-bottom: -10px !important;
+    height: 0 !important;
+    border-top: 0 !important;
+}
+
+
 @media (max-width: 640px) {
     .card-header {
         padding: 0.75rem !important;
