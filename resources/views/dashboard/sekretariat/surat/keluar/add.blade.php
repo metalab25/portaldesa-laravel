@@ -12,7 +12,8 @@
                 @csrf
                 <div class="row form-group mb-2">
                     <div class="col-md-3">
-                        <label for="ajaxklasifikasi" class="form-label text-sm align-middle">Klasifikasi Surat</label>
+                        <label for="ajaxklasifikasi" class="form-label text-sm align-middle opacity-8">Klasifikasi
+                            Surat</label>
                     </div>
                     <div class="col-md-8">
                         <select name="klasifikasi_surat_id" id="ajaxklasifikasi" class="form-control form-control-sm">
@@ -112,6 +113,10 @@
     </section>
     <script>
         $(document).ready(function() {
+            $('#ajaxklasifikasi').on('select2:open', function() {
+                $('.select2-search--dropdown .select2-search__field').attr('placeholder',
+                    'Ketik kode klasifikasi surat...');
+            });
             $("#ajaxklasifikasi").select2({
                 placeholder: '-- Pilih Klasifikasi Surat --',
                 ajax: {
@@ -124,7 +129,9 @@
                             results: $.map(data, function(item) {
                                 return {
                                     id: item.id,
-                                    text: item.nama
+                                    text: [
+                                        item.kode + ' - ' + item.nama
+                                    ]
                                 }
                             })
                         }
