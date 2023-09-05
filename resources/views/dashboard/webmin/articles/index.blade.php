@@ -17,7 +17,7 @@
                         <ul class="list-group">
                             @foreach ($dinamis as $item)
                                 <li class="list-group-item text-sm {{ request()->segment(2) == $item->id ? 'active' : '' }}">
-                                    <a href="{{ url('posts/categories/' . $item->id) }}">
+                                    <a href="{{ url('webmin/posts/categories/' . $item->id) }}">
                                         {{ $item->name }}
                                     </a>
                                 </li>
@@ -49,7 +49,8 @@
                                 </div>
                             </div>
                             <div class="col-md-1">
-                                <a href="{{ url('posts/create') }}" class="btn btn-sm btn-block btn-primary mb-2">Tambah</a>
+                                <a href="{{ url('webmin/posts/create') }}"
+                                    class="btn btn-sm btn-block btn-primary mb-2">Tambah</a>
                             </div>
                         </div>
                     </div>
@@ -149,7 +150,8 @@
                                                     </button>
                                                 @endif
                                             </form>
-                                            <form action="/posts/{{ $item->id }}" method="POST" class="d-inline">
+                                            <form action="/webmin/posts/{{ $item->id }}" method="POST"
+                                                class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-xs btn-danger"

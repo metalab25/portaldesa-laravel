@@ -266,7 +266,7 @@
         </form>
     </section>
     <!-- CK Editor 5 -->
-    <script src="{{ asset('assets/plugins/ckeditor5/ckeditor5.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/super-build/ckeditor.js"></script>
     <script>
         const title = document.querySelector("#title");
         const slug = document.querySelector("#slug");
