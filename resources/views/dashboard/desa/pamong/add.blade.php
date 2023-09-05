@@ -165,7 +165,7 @@
             </div>
         </form>
     </section>
-    <script src="{{ asset('assets/plugins/ckeditor5/ckeditor5.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/super-build/ckeditor.js"></script>
     <script>
         $(document).ready(function() {
             $('#ajaxPenduduk').on('select2:open', function() {
