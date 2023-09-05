@@ -93,7 +93,7 @@
                                             title="Edit Kategori">
                                             <i class="fad fa-pencil text-white text-xs"></i>
                                         </button>
-                                        <form action="/posts/categories/{{ $item->id }}" method="POST"
+                                        <form action="/webmin/categories/{{ $item->id }}" method="POST"
                                             class="d-inline">
                                             @method('delete')
                                             @csrf
