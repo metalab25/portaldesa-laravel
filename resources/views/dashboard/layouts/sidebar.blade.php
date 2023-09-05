@@ -10,7 +10,13 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('assets/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                @if ($user->avatar !== null)
+                    <img src="{{ asset('storage/' . $user->avatar) }}" class="img-circle elevation-2"
+                        alt="{{ $item->name }}">
+                @else
+                    <img src="{{ asset('assets/img/no-pic.png') }}" class="img-circle elevation-2"
+                        alt="{{ $user->name }}">
+                @endif
             </div>
             <div class="info">
                 <a href="#" class="d-block font-outfit">{{ $user->name }}</a>
