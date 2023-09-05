@@ -75,10 +75,10 @@ Route::resource('sekretariat/surat_masuk', SuratMasukController::class)->middlew
 Route::get('get_klasifikasi', [KlasifikasiSuratController::class, 'selectSearch'])->middleware('auth', 'admin');
 
 // webmin > Artikel
-Route::resource('posts', ArticleController::class)->middleware('auth', 'admin', 'operator');
-Route::get('posts/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
-Route::patch('posts/status/{id}', [ArticleController::class, 'status'])->name('posts.status')->middleware('auth', 'admin');
-Route::patch('posts/comment/{id}', [ArticleController::class, 'comment'])->name('posts.comment')->middleware('auth', 'admin');
+Route::resource('webmin/posts', ArticleController::class)->middleware('auth', 'admin', 'operator');
+Route::get('webmin/posts/checkSlug', [ArticleController::class, 'checkSlug'])->middleware('auth', 'admin');
+Route::patch('webmin/posts/status/{id}', [ArticleController::class, 'status'])->name('posts.status')->middleware('auth', 'admin');
+Route::patch('webmin/posts/comment/{id}', [ArticleController::class, 'comment'])->name('posts.comment')->middleware('auth', 'admin');
 
 // webmin > Kategori
 Route::resource('posts/categories', CategoryController::class)->middleware('auth', 'admin', 'operator');
