@@ -185,9 +185,7 @@
                                 return {
                                     id: item.id,
                                     text: [
-                                        item.nik,
-                                        ' - ',
-                                        item.nama
+                                        item.nik + ' - ' + item.nama
                                     ]
                                 }
                             })
