@@ -26,14 +26,58 @@ class Document extends Model
         ];
     }
 
-    public function getCreatedAtAttribute()
+    public function scopeFilter($query, array $filters)
     {
-        return Carbon::parse($this->attributes['created_at'])->isoFormat('DD MMMM Y - HH:mm:ss');
+        if (isset($filters['search']) ? $filters['search'] : false) {
+            return $query->where('jenis', 'like', '%' . $filters['search'] . '%');
+        }
     }
 
-    public function getUpdatedAtAttribute()
+    public function scopeFilterTahun($query, array $filters)
     {
-        return Carbon::parse($this->attributes['updated_at'])->isoFormat('DD MMMM Y - HH:mm:ss');
+        if (isset($filters['tahun']) ? $filters['tahun'] : false) {
+            return $query->where('created_at', 'like', '%' . $filters['tahun'] . '%');
+        }
+    }
+
+    // public function getCreatedAtAttribute()
+    // {
+    //     return Carbon::parse($this->attributes['created_at'])->isoFormat('DD MMMM Y - HH:mm:ss');
+    // }
+
+    // public function getUpdatedAtAttribute()
+    // {
+    //     return Carbon::parse($this->attributes['updated_at'])->isoFormat('DD MMMM Y - HH:mm:ss');
+    // }
+
+    public function getTglTetapanAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_tetapan'])->isoFormat('DD-MM-Y');
+    }
+
+    public function getTglKeputusanAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_keputusan'])->isoFormat('DD-MM-Y');
+    }
+
+    public function getTglSepakatAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_sepakat'])->isoFormat('DD-MM-Y');
+    }
+
+    public function getTglLaporkanAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_laporkan'])->isoFormat('DD-MM-Y');
+    }
+
+    public function getTglLembaranDiundangkanAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_lembaran_diundangkan'])->isoFormat('DD-MM-Y');
+    }
+
+    public function getTglBeritaDiundangkanAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_berita_diundangkan'])->isoFormat('DD-MM-Y');
     }
 
     public function doc_type()

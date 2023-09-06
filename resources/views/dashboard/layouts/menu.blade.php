@@ -106,7 +106,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html" class="nav-link font-weight-lighter">
+                        <a href="{{ url('sekretariat/perdes') }}"
+                            class="nav-link {{ request()->segment(2) == 'perdes' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-file-shield nav-icon"></i>
                             <p>Peraturan {{ $config->sebutan_desa }}</p>
                         </a>

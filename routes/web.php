@@ -8,6 +8,8 @@ use App\Http\Controllers\DesaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\PamongController;
+use App\Http\Controllers\PerdesController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\CategoryController;
@@ -18,7 +20,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\KlasifikasiSuratController;
-use App\Http\Controllers\PamongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,11 @@ Route::resource('sekretariat/surat_masuk', SuratMasukController::class)->middlew
 
 // Get Klasifikasi Surat
 Route::get('get_klasifikasi', [KlasifikasiSuratController::class, 'selectSearch'])->middleware('auth', 'admin');
+
+// Sekretariat > Peraturan Desa
+Route::resource('sekretariat/perdes', PerdesController::class)->middleware('auth', 'admin');
+Route::get('sekretariat/perdes/checkSlug', [PerdesController::class, 'checkSlug'])->middleware('auth', 'admin', 'operator');
+Route::get('sekretariat/perdes/cetak', [PerdesController::class, 'cetakLaporan'])->middleware('auth', 'admin', 'operator');
 
 // webmin > Artikel
 Route::resource('webmin/posts', ArticleController::class)->middleware('auth', 'admin', 'operator');
