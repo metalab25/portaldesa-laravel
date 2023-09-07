@@ -26,6 +26,12 @@ Breadcrumbs::for('pamong', function (BreadcrumbTrail $trail) {
     $trail->push('Pemerintahan', url('desa/pamong'));
 });
 
+// Desa > Profile
+Breadcrumbs::for('profile', function (BreadcrumbTrail $trail) {
+    $trail->parent('desa');
+    $trail->push('Profil', url('desa/profile'));
+});
+
 // Wilayah
 Breadcrumbs::for('wilayah', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

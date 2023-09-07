@@ -17,6 +17,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DesProfileController;
 use App\Http\Controllers\SuratMasukController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\KlasifikasiSuratController;
@@ -32,9 +33,6 @@ use App\Http\Controllers\KlasifikasiSuratController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'index')->name('login');
     Route::post('login/authenticate', 'authenticate');
@@ -50,6 +48,10 @@ Route::put('desa/identitas/{desa:id}', [DesaController::class, 'update'])->middl
 Route::resource('wilayah/cluster', WilayahController::class)->middleware('auth', 'admin');
 Route::resource('wilayah/rw', RwController::class)->middleware('auth', 'admin');
 Route::resource('wilayah/rt', RtController::class)->middleware('auth', 'admin');
+
+// Desa > Profile
+Route::resource('desa/profile', DesProfileController::class)->middleware('auth', 'admin');
+Route::get('desa/profile/checkSlug', [DesProfileController::class, 'checkSlug'])->middleware('auth', 'admin');
 
 // Desa > Pemerintahan
 Route::resource('desa/pamong', PamongController::class)->middleware('auth', 'admin');
