@@ -25,7 +25,7 @@ class ArticleController extends Controller
             'desa'          =>  Desa::find(1),
             'config'        =>  Config::find(1),
             'dinamis'       =>  Category::orderBy('name', 'asc')->where('category_type_id', 1)->get(),
-            'articles'      =>  Article::orderBy('created_at', 'asc')->get()
+            'articles'      =>  Article::latest()->whereNotIn('category_id', [5])->get()
         ]);
     }
 
@@ -66,6 +66,9 @@ class ArticleController extends Controller
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
+        if ($request->file('avatar')) {
+            $validatedData['avatar'] = $request->file('avatar')->store('user-images');
+        }
         if ($request->file('image1')) {
             $validatedData['image1'] = $request->file('image1')->store('post-images');
         }
@@ -89,6 +92,8 @@ class ArticleController extends Controller
         $validatedData['sumber_berita']         = $request->sumber_berita;
         $validatedData['link_sumber_berita']    = $request->link_sumber_berita;
         $validatedData['tgl_agenda']            = $request->tgl_agenda;
+        $validatedData['pemberi_sambutan']      = $request->pemberi_sambutan;
+        $validatedData['jabatan_sambutan']      = $request->jabatan_sambutan;
 
         // dd($validatedData);
 

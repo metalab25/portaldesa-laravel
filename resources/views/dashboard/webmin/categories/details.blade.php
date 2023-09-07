@@ -88,84 +88,88 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($articles as $item)
-                                        <td class="align-middle ps-2">
-                                            <p class="text-center text-xs text-secondary mb-0">{{ $loop->iteration }}</p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
-                                                {{ $item->title }}
-                                            </p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <p
-                                                class="text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
-                                                {{ $item->category->name }}
-                                            </p>
-                                        </td>
-                                        <td
-                                            class="align-middle text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
-                                            @if ($item->status == 1)
-                                                <i class="fad fa-check text-success mt-2"></i>
-                                            @else
-                                                <i class="fad fa-lock text-danger mt-1"></i>
-                                            @endif
-                                        </td>
-                                        <td class="align-middle">
-                                            <p
-                                                class="text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
-                                                {{ $item->user->name }}
-                                            </p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <p
-                                                class="text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
-                                                {{ $item->created_at }}
-                                            </p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <button class="btn btn-xs btn-warning" data-id="{{ $item->id }}"
-                                                data-toggle="modal" data-target="#edit{{ $item->id }}"
-                                                title="Edit Kategori">
-                                                <i class="fad fa-pencil text-white text-xs"></i>
-                                            </button>
-                                            <form action="{{ route('posts.status', $item->id) }}" method="POST"
-                                                class="d-inline">
-                                                @method('PATCH')
-                                                @csrf
-                                                @if ($item->status == 0)
-                                                    <button type="submit" class="btn btn-xs btn-dark" value="1">
-                                                        <i class="fad fa-toggle-on text-white text-xs"></i>
-                                                    </button>
-                                                @elseif ($item->status == 1)
-                                                    <button type="submit" class="btn btn-xs btn-success" value="0">
-                                                        <i class="fad fa-toggle-off text-white text-xs"></i>
-                                                    </button>
+                                        <tr>
+                                            <td class="align-middle ps-2">
+                                                <p class="text-center text-xs text-secondary mb-0">{{ $loop->iteration }}
+                                                </p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p class="text-sm text-secondary font-outfit font-weight-500 mb-0">
+                                                    {{ $item->title }}
+                                                </p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p
+                                                    class="text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
+                                                    {{ $item->category->name }}
+                                                </p>
+                                            </td>
+                                            <td
+                                                class="align-middle text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
+                                                @if ($item->status == 1)
+                                                    <i class="fad fa-check text-success mt-2"></i>
+                                                @else
+                                                    <i class="fad fa-lock text-danger mt-1"></i>
                                                 @endif
-                                            </form>
-                                            <form action="{{ route('posts.comment', $item->id) }}" method="POST"
-                                                class="d-inline">
-                                                @method('PATCH')
-                                                @csrf
-                                                @if ($item->komentar == 0)
-                                                    <button type="submit" class="btn btn-xs btn-dark" value="1">
-                                                        <i class="fad fa-comments text-white text-xs"></i>
-                                                    </button>
-                                                @elseif ($item->komentar == 1)
-                                                    <button type="submit" class="btn btn-xs btn-info" value="0">
-                                                        <i class="fad fa-comments text-white text-xs"></i>
-                                                    </button>
-                                                @endif
-                                            </form>
-                                            <form action="/webmin/posts/{{ $item->id }}" method="POST"
-                                                class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-xs btn-danger"
-                                                    onclick="return confirm ('Anda yakin akan menghapus ketegori ini ?')">
-                                                    <i class="fad fa-trash-can text-white text-xs"></i>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p
+                                                    class="text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
+                                                    {{ $item->user->name }}
+                                                </p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <p
+                                                    class="text-sm text-center text-secondary font-outfit font-weight-lighter mb-0">
+                                                    {{ $item->created_at }}
+                                                </p>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <button class="btn btn-xs btn-warning" data-id="{{ $item->id }}"
+                                                    data-toggle="modal" data-target="#edit{{ $item->id }}"
+                                                    title="Edit Kategori">
+                                                    <i class="fad fa-pencil text-white text-xs"></i>
                                                 </button>
-                                            </form>
-                                        </td>
+                                                <form action="{{ route('posts.status', $item->id) }}" method="POST"
+                                                    class="d-inline">
+                                                    @method('PATCH')
+                                                    @csrf
+                                                    @if ($item->status == 0)
+                                                        <button type="submit" class="btn btn-xs btn-dark" value="1">
+                                                            <i class="fad fa-toggle-on text-white text-xs"></i>
+                                                        </button>
+                                                    @elseif ($item->status == 1)
+                                                        <button type="submit" class="btn btn-xs btn-success"
+                                                            value="0">
+                                                            <i class="fad fa-toggle-off text-white text-xs"></i>
+                                                        </button>
+                                                    @endif
+                                                </form>
+                                                <form action="{{ route('posts.comment', $item->id) }}" method="POST"
+                                                    class="d-inline">
+                                                    @method('PATCH')
+                                                    @csrf
+                                                    @if ($item->komentar == 0)
+                                                        <button type="submit" class="btn btn-xs btn-dark" value="1">
+                                                            <i class="fad fa-comments text-white text-xs"></i>
+                                                        </button>
+                                                    @elseif ($item->komentar == 1)
+                                                        <button type="submit" class="btn btn-xs btn-info" value="0">
+                                                            <i class="fad fa-comments text-white text-xs"></i>
+                                                        </button>
+                                                    @endif
+                                                </form>
+                                                <form action="/webmin/posts/{{ $item->id }}" method="POST"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-xs btn-danger"
+                                                        onclick="return confirm ('Anda yakin akan menghapus ketegori ini ?')">
+                                                        <i class="fad fa-trash-can text-white text-xs"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

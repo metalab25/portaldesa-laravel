@@ -12,6 +12,16 @@
 }
 /* Google Font End */
 
+a.link-sambutan {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.link-sambutan:hover {
+    color: orange;
+    text-decoration: none;
+}
+
 @media (max-width: 640px) {
     .visible-sm-inline-block {
         display: block !important;

@@ -38,6 +38,7 @@
             </div>
         </div>
     </section>
+    @include('web.sambutan')
     <section class="my-5 py-5">
         <div class="container">
             <div class="row align-items-center">

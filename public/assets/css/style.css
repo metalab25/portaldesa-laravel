@@ -219,6 +219,11 @@ img.header-image {
     margin-bottom: 1rem !important;
 }
 
+.avatar-preview {
+    display: block;
+    width: 35%;
+}
+
 .main-footer {
     font-size: 0.8rem;
 }
