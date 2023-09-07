@@ -20,6 +20,9 @@ return new class extends Migration
             $table->longText('body');
             $table->string('image');
             $table->string('caption_image')->nullable();
+            $table->string('pemberi_sambutan')->nullable();
+            $table->string('jabatan_sambutan')->nullable();
+            $table->string('foto_sambutan')->nullable();
             $table->string('image1')->nullable();
             $table->string('caption_image1')->nullable();
             $table->string('image2')->nullable();

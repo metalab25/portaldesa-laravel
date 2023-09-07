@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Desa;
 use App\Models\Config;
+use App\Models\Article;
 use App\Models\Wilayah;
 use App\Models\Keluarga;
 use App\Models\Penduduk;
@@ -21,6 +22,7 @@ class WebController extends Controller
             'cluster_count'     =>  Wilayah::all()->count(),
             'keluarga_count'    =>  Keluarga::all()->count(),
             'penduduk_count'    =>  Penduduk::all()->count(),
+            'sambutan'          =>  Article::latest()->where('category_id', 12)->limit(1)->get()
         ]);
     }
 }

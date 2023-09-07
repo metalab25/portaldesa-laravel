@@ -7,7 +7,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{ url('posts/') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('webmin/posts') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xl-9 col-md-9">
@@ -26,7 +26,7 @@
                         <div class="form-group mb-2">
                             <label for="slug" class="form-label text-sm opacity-8">Slug</label>
                             <input type="text" class="form-control form-control-sm" id="slug" name="slug"
-                                readonly>
+                                value="{{ old('slug') }}" readonly>
                             @error('slug')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -180,6 +180,53 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-header px-3">
+                            <h5 class="card-title text-sm font-outfit font-weight-500 opacity-8">Pengaturan
+                                Sambutan/Himbauan</h5>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body px-3 pt-0 mt-n2">
+                            <div class="form-group mb-2">
+                                <label for="pemberi_sambutan" class="form-label text-sm opacity-8">Nama Pemberi
+                                    Sambutan</label>
+                                <input type="text" class="form-control form-control-sm" name="pemberi_sambutan"
+                                    id="pemberi_sambutan" placeholder="Nama pemberi sambutan"
+                                    value="{{ old('pemberi_sambutan') }}">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="jabatan_sambutan" class="form-label text-sm opacity-8">Jabatan Pemberi
+                                    Sambutan</label>
+                                <input type="text" class="form-control form-control-sm" name="jabatan_sambutan"
+                                    id="jabatan_sambutan" placeholder="Jabatan pemberi sambutan"
+                                    value="{{ old('jabatan_sambutan') }}">
+                            </div>
+                            <div class="form-group mb-0">
+                                <label for="avatar" class="form-label text-sm opacity-8">Foto Pemberi
+                                    Sambutan/Himbauan</label>
+                                <div class="mb-0">
+                                    <input class="form-control form-control-sm @error('avatar') is-invalid @enderror mb-2"
+                                        type="file" name="avatar" id="avatar" onchange="previewAvatar()">
+                                    @error('avatar')
+                                        <div class="invalid-feedback text-center">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    <div class="d-flex justify-content-center">
+                                        <img src="/assets/img/kuser.png"
+                                            class="avatar-preview img-rounded img-fluid d-block mx-auto mt-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card">
                         <div class="card-header px-3">
                             <h5 class="card-title text-sm font-outfit font-weight-500 opacity-8">Pengaturan Lain</h5>
@@ -480,6 +527,20 @@
                 imgPreview.src = oFREvent.target.result;
             }
             const blob = URL.createObjectURL(image3.files[0]);
+            imgPreview.src = blob;
+        }
+
+        function previewAvatar() {
+            const avatar = document.querySelector('#avatar');
+            const imgPreview = document.querySelector('.avatar-preview');
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(avatar.files[0]);
+
+            oFReader.onLoad = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+            const blob = URL.createObjectURL(avatar.files[0]);
             imgPreview.src = blob;
         }
     </script>
