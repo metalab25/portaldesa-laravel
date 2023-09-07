@@ -1,0 +1,20 @@
+/* Google Font Start */
+.font-quicksand {
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.font-outfit {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif !important;
+}
+/* Google Font End */
+
+@media (max-width: 640px) {
+    .visible-sm-inline-block {
+        display: block !important;
+        width: 100% !important;
+    }
+}

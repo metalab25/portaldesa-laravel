@@ -4,6 +4,7 @@ use App\Models\KlasifikasiSurat;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
+use App\Http\Controllers\WebController;
 use App\Http\Controllers\DesaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -101,3 +102,5 @@ Route::get('setting/application', [ConfigController::class, 'index'])->name('app
 Route::put('setting/application/{config:id}', [ConfigController::class, 'update'])->middleware('auth', 'admin');
 
 Route::resource('setting/users', UserController::class)->middleware('auth', 'admin');
+
+Route::get('/', [WebController::class, 'index'])->name('/');

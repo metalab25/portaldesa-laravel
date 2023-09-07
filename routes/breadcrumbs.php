@@ -3,6 +3,11 @@
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
+// Website
+Breadcrumbs::for('beranda', function (BreadcrumbTrail $trail) {
+    $trail->push('Home', route('/'));
+});
+
 // Dashboard
 Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('dashboard'));
