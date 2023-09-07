@@ -144,7 +144,8 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script> {{ $config->nama_aplikasi }} by <a href="javascript:void(0)"
-                            target="_blank">PDD Team</a>.
+                            target="_blank">PDD Team</a>.<br>Build with Laravel
+                        version {{ Illuminate\Foundation\Application::VERSION }}
                     </p>
                 </div>
             </div>
