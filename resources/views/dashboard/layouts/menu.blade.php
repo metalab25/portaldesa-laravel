@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index2.html"
+                        <a href="{{ url('desa/profile') }}"
                             class="nav-link {{ request()->segment(2) == 'profile' ? 'active' : '' }} font-weight-lighter">
                             <i class="fad fa-file-check nav-icon"></i>
                             <p>Profil {{ $config->sebutan_desa }}</p>
